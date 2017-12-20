@@ -26,6 +26,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="main.h" />
+		<Unit filename="sqlQuery.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="sqlQuery.h" />
 		<Unit filename="yamlParser.c">
 			<Option compilerVar="CC" />
 		</Unit>
