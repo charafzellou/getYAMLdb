@@ -25,7 +25,11 @@
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="yamldb.yaml" />
+		<Unit filename="main.h" />
+		<Unit filename="yamlParser.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="yamlParser.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />
