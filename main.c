@@ -1,7 +1,6 @@
 #include <stdio.h>
-#include "yamldb.yaml"
+#include "yamlParser.c"
 
 int main(int argc, char const *argv[]) {
-
     return 0;
 }
