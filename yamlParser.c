@@ -7,21 +7,25 @@ void YAML_Parser() {
 
     fseek(file, cursorStart, SEEK_SET);
 
+    // Look if file exists
     if(file == NULL)
     {
         fprintf(stderr,"\nERROR, \ncannot open the weather file");
         return -1;
     }
 
+    // Initiate all the cases in the table
     char counter[2] = "",
         number[7] = "",
         average[5] = "",
         humidity[3] = "";
 
+    // Set the cursor to beginning
     fseek(file, 0, SEEK_SET);
 
-    // JUMP jusqu'au Content Bracket
-    while(jump < 5){
+    // read line by line
+    // JUMP jusqu'au '\0'
+    while(actual_char != '\0'{
         actual_char = fgetc(file);
         if(actual_char == ','){
             jump++;
