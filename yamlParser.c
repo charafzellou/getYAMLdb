@@ -2,16 +2,10 @@
 
 int YAML_Parser() {
     //  Initiate all the vars in the table
-    FILE* file = fopen("DataBases/db1/users.yaml", "rb+");
+    FILE* file = fopen("DataBases/db1/users.yaml", "r+b");
     char* stream = malloc(sizeof(char)*2048);
-    short pointeur = ftell(file);
     char actual_char;
-
-    short counter;
-    float number;
-    char average;
-    char* humidity;
-    char c_counter[256], c_number[256], c_average[256], c_humidity[256];
+    short counterU = 0, counterP = 0;
 
     //  Look if file exists
     if(file == NULL)
@@ -22,26 +16,42 @@ int YAML_Parser() {
 
     //  Storing COUNTER - how many records are in the table
     fseek(file, 9, SEEK_SET);
-    actual_char = fgetc(file);
-    if(actual_char != '\n')
-        counter = (int)actual_char;
-    printf("The selected table contains %c records to show:\n", counter);
+    fgets(stream, 2048, file);
+    counterU = strtol(stream, NULL, 10);
+    printf("The selected table contains %d records to show:\n", counterU);
 
-    //  Saut jusqu'au USER1
-    short seekJump = 7;
+    //  Jump to USER1
+    fgets(stream, 2048, file);
+    printf("%s", stream);
+    if(strcmp(stream, "params:\r\n"))
+        printf("ERROR: Params not found in YamlDB");
+    else
+        while(!strcmp(stream, "content:\r\n") == 0){
+            fgets(stream, 2048, file);
+            printf("%d", counterP);
+            counterP++;
+        }
+
+    // Insert all data in the table
+    char* allData[counterU][counterP];
+
+    fgets(stream, NULL, file);
+
+
+    /*
+    short seekJump = 6;
     while(seekJump > 0){
         actual_char = fgetc(file);
-        if(actual_char == '\n'){
+        if(actual_char == '\n')
             seekJump--;
-        }
     }
-
     seekJump = 5;
     while(seekJump > 0){
-        fgets(stream, 128, file);
+        fgets(stream, 2048, file);
         printf("%s", stream);
         seekJump--;
     }
+    */
 
     fclose(file);
     return 0;

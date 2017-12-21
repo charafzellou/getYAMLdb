@@ -190,7 +190,7 @@ void dataInsertion(char * dbPath, char * dbName, char * values){
             fseek(fTable, 0, SEEK_SET);
             fread(tableYaml, sizeof(char), fileSize, fTable);
             printf("%s", tableYaml);
-            strncpy(tableCounter, tableYaml, strstr(tableYaml, "counter: ") - strstr())
+            //strncpy(tableCounter, tableYaml, strstr(tableYaml, "counter: ") - strstr());
 
             free(tableYaml);
         }

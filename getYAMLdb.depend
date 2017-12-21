@@ -10,7 +10,7 @@
 	<time.h>
 	<sys/file.h>
 
-1513851894 source:c:\users\chaze exodus\documents\github\getyamldb\manage_db.c
+1513866908 source:c:\users\chaze exodus\documents\github\getyamldb\manage_db.c
 	<stdio.h>
 	<stdlib.h>
 	<windows.h>
@@ -36,19 +36,16 @@
 	<windows.h>
 	<string.h>
 
-1513811383 source:c:\users\chaze exodus\documents\github\getyamldb\sqlquery.c
+1513865555 source:c:\users\chaze exodus\documents\github\getyamldb\sqlquery.c
+	"sqlQuery.h"
+
+1513862259 c:\users\chaze exodus\documents\github\getyamldb\sqlquery.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	<windows.h>
 	<time.h>
 
-1513848034 c:\users\chaze exodus\documents\github\getyamldb\sqlquery.h
-	<stdio.h>
-	<stdlib.h>
-	<windows.h>
-	<string.h>
-
-1513851900 source:c:\users\chaze exodus\documents\github\getyamldb\yamlparser.c
+1513868181 source:c:\users\chaze exodus\documents\github\getyamldb\yamlparser.c
 	"yamlParser.h"
 
