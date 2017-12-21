@@ -22,10 +22,16 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="create_db.h" />
+		<Unit filename="delete_db.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="main.h" />
+		<Unit filename="manage_db.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="manage_db.h" />
 		<Unit filename="sqlQuery.c">
 			<Option compilerVar="CC" />
 		</Unit>

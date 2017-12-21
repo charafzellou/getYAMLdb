@@ -1,9 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <windows.h>
+#include <string.h>
 #define FILE_NAME "text.yaml"
 
-void delete_db(){
+int delete_db(){
 
     int del;
         //FILE *fp;

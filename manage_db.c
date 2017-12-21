@@ -7,20 +7,18 @@
 #define FILE_NAME "text.yaml"
 
 void create_db();
-
+/*
 int main()
 {
     int choice;
 
-    /*
     printf("*** Menu ***\n");
     printf("Press 1 to : CREATE A DATABASE\n");
     printf("Press 2 to : USE AN EXISTANT DATABASE\n");
     //To add or destroy a table to add inside the function Use existant database
     printf("Press 3 to : DELETE A DATABASE\n");
     scanf("%d",choice);
-    */
-    /*
+
     if(choice = 1){
        create_db();
     }
@@ -30,7 +28,7 @@ int main()
     if(choice = 3){
         delete_db();
     }
-    */
+
 
 	//printf("Directory will be created by default in repertory\n");
     //char name_db;
@@ -38,11 +36,11 @@ int main()
     //printf("Name your DATABASE YAML file : (do not forget the .yaml)\n");
     //scanf("%s", &name_db);
 
-    /*
+
     FILE *fp = fopen(FILE_NAME, "w");
 
     fclose(fp);
-    */
+
 
     int del;
 
@@ -58,3 +56,4 @@ int main()
     }
     return 0;
 }
+*/

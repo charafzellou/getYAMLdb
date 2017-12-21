@@ -2,13 +2,12 @@
 #include <stdlib.h>
 #include <windows.h>
 #include <string.h>
-
+/*
 void create_db(){
 
     //int valid;
     //char *dirname;
 
-    /*
     printf("Enter a directory path to be created : ((C:/name_chosen)");
     gets(dirname);
     valid = mkdir(dirname);
@@ -23,7 +22,7 @@ void create_db(){
         getch();
         system("dir/p");
         getch();
-        */
+
 
         //Créer la Database en .yaml
 
@@ -36,8 +35,9 @@ void create_db(){
         FILE *fp = NULL;
 
         fp = fopen(name_db, "wr+");
-       /* if(fp == NULL){
+        if(fp == NULL){
             printf("Error in opening file ! \n");
         }
-        */
+
     }
+*/

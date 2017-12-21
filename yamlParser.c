@@ -1,11 +1,10 @@
-#include "yml_parser.h"
+#include "yamlParser.h"
 
-void YAML_Parser() {
-    FILE* file = fopen("DataBases\db1\users.yaml");
+int YAML_Parser() {
+    FILE* file = fopen("DataBases/db1/users.yaml", "rb+");
     char* stream = malloc(sizeof(char)*2048);
     short pointeur = ftell(file);
-
-    fseek(file, cursorStart, SEEK_SET);
+    char actual_char;
 
     // Look if file exists
     if(file == NULL)
@@ -14,38 +13,26 @@ void YAML_Parser() {
         return -1;
     }
 
-    // Initiate all the cases in the table
-    char counter[2] = "",
-        number[7] = "",
-        average[5] = "",
-        humidity[3] = "";
+    // Initiate all the vars in the table
+    int counter;
+    float number;
+    char average;
+    char* humidity;
+    char c_counter[256], c_number[256], c_average[256], c_humidity[256];
 
-    // Set the cursor to beginning
+    // Set the cursor at beginning
     fseek(file, 0, SEEK_SET);
 
     // read line by line
-    // JUMP jusqu'au '\0'
-    while(actual_char != '\0'{
+    fseek(file, 9, SEEK_SET);
+    short i = 0;
+    while(actual_char != '\n'){
         actual_char = fgetc(file);
-        if(actual_char == ','){
-            jump++;
-        }
-    }
-    jump = 0;
-    while(jump < 2){
-        actual_char = fgetc(file);
-         if(actual_char == ':'){
-            jump++;
-        }
-    }
-    int i = 0;
-    actual_char = fgetc(file);
-    while(actual_char != ',')
-    {
-        databasename[i] = actual_char;
-        actual_char = fgetc(file);
+        printf("%c", actual_char);
+        c_counter[i] = actual_char;
         i++;
     }
 
     fclose(file);
+    return 0;
 }

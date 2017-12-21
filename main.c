@@ -1,6 +1,22 @@
 #include <stdio.h>
-#include "yamlParser.c"
 
-int main(int argc, char const *argv[]) {
+int main() {
+    YAML_Parser();
+
+    //  Create Database
+    //  Create Table
+    //  Create Record
+
+    //  Read Record
+    //  Modify Record
+    //  Delete Record
+
+    //  Modify Table
+    //  Create Record
+    //  Read Record
+    //  Delete Record
+
+    //  Delete Table
+    //  Delete Database
     return 0;
 }

@@ -1,0 +1,54 @@
+# depslib dependency file v1.0
+1513851864 source:c:\users\chaze exodus\documents\github\getyamldb\main.c
+	<stdio.h>
+
+1513851533 c:\users\chaze exodus\documents\github\getyamldb\yamlparser.h
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	<string.h>
+	<time.h>
+	<sys/file.h>
+
+1513851894 source:c:\users\chaze exodus\documents\github\getyamldb\manage_db.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	"create_db.h"
+	"manage_db.h"
+	"delete_db.h"
+
+1513851947 c:\users\chaze exodus\documents\github\getyamldb\create_db.h
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	<string.h>
+
+1513848033 c:\users\chaze exodus\documents\github\getyamldb\manage_db.h
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	<string.h>
+
+1513851964 c:\users\chaze exodus\documents\github\getyamldb\delete_db.h
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	<string.h>
+
+1513811383 source:c:\users\chaze exodus\documents\github\getyamldb\sqlquery.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<windows.h>
+	<time.h>
+
+1513848034 c:\users\chaze exodus\documents\github\getyamldb\sqlquery.h
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	<string.h>
+
+1513851900 source:c:\users\chaze exodus\documents\github\getyamldb\yamlparser.c
+	"yamlParser.h"
+
