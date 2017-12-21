@@ -5,7 +5,7 @@ params:
     rank: char
     name: varchar(255)
 content:
-    user 1:
+    users 1:
         number: 55
         average: 55.5
         rank: c

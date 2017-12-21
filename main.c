@@ -1,8 +1,8 @@
 #include <stdio.h>
 
 int main() {
-    YAML_Parser();
-
+    //YAML_Parser();
+    menu1();
     //  Create Database
     //  Create Table
     //  Create Record

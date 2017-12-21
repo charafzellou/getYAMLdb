@@ -52,3 +52,53 @@
 1513851900 source:c:\users\chaze exodus\documents\github\getyamldb\yamlparser.c
 	"yamlParser.h"
 
+1513862956 source:e:\juanj\documents\github\git\getyamldb\main.c
+	<stdio.h>
+
+1513861914 source:e:\juanj\documents\github\git\getyamldb\manage_db.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	"create_db.h"
+	"manage_db.h"
+	"delete_db.h"
+
+1513861914 e:\juanj\documents\github\git\getyamldb\create_db.h
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	<string.h>
+
+1513861914 e:\juanj\documents\github\git\getyamldb\manage_db.h
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	<string.h>
+
+1513861914 e:\juanj\documents\github\git\getyamldb\delete_db.h
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	<string.h>
+
+1513862621 source:e:\juanj\documents\github\git\getyamldb\sqlquery.c
+	"sqlQuery.h"
+
+1513862240 e:\juanj\documents\github\git\getyamldb\sqlquery.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<windows.h>
+	<time.h>
+
+1513862810 source:e:\juanj\documents\github\git\getyamldb\yamlparser.c
+	"yamlParser.h"
+
+1513862802 e:\juanj\documents\github\git\getyamldb\yamlparser.h
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	<string.h>
+	<time.h>
+	<sys/file.h>
+
