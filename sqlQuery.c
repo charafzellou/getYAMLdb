@@ -1,10 +1,6 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <windows.h>
-#include <time.h>
+#include "sqlQuery.h"
 
-int menu1(int argc, char ** argv) {
+void menu1() {
     char name[255];
     char choiceMenu1;
 
@@ -36,8 +32,6 @@ int menu1(int argc, char ** argv) {
                 system("cls");
         }
     }while ( choiceMenu1 != 'q' );
-
-    return 0;
 }
 
 /**
@@ -125,25 +119,96 @@ void sqlQueryF(char * dbPath, char * sqlQuery, int querySize){
     char table[255];
     table[0] = '\0';
 
-
-    printf("%s\n", sqlQuery);
     pointerSave = strstr(sqlQuery, "INSERT INTO ");
-    printf("%s\n", pointerSave);
     if (pointerSave == sqlQuery){
         pointerSave += 12;
         sqlQuery = pointerSave;
         pointerSave = strchr(sqlQuery, ' ');
-        printf("%s\n", sqlQuery);
+        printf("%s\n", sqlQuery); //test
         if ( pointerSave != NULL){
             strncpy(table, sqlQuery, pointerSave - sqlQuery);
             table[pointerSave - sqlQuery] = '\0';
-            printf("result : \n");
-            printf("|%s|", table);
+            printf("result : \n"); // test
+            printf("|%s|\n", table); // test
+
+            if (tableExist(dbPath, table)){
+                sqlQuery = pointerSave;
+                pointerSave = strstr(sqlQuery, "VALUES");
+
+                if ( pointerSave == sqlQuery + 1 ){
+                    sqlQuery = pointerSave;
+                    pointerSave = strchr(sqlQuery, ' ');
+                    printf("values ok \n"); // test
+                    dataInsertion(dbPath, table, pointerSave);
+                }
+            } else {
+                printf("Cette table n'existe pas /:\n");
+            }
 
         }
     }
 }
 
-int tableExist(char * dbName){
+int tableExist(char * dbPath, char * tableName){
+    char tablePath[500] = "DataBases\\";
+    FILE* fTable;
+    tablePath[11] = '\0';
 
+    strcat(tablePath, dbPath);
+    strcat(tablePath, "\\");
+    strcat(tablePath, tableName);
+    strcat(tablePath, ".yaml");
+printf("%s\n", tablePath); // test
+    fTable = fopen(tablePath, "r");
+    if ( fTable != NULL){
+        fclose(fTable);
+        return EXIT_FAILURE;
+    } else {
+        return EXIT_SUCCESS;
+    }
+}
+
+void dataInsertion(char * dbPath, char * dbName, char * values){
+    char tablePath[500] = "DataBases\\";
+    FILE* fTable;
+    tablePath[11] = '\0';
+    char * tableYaml;
+    int fileSize;
+    char tableCounter[10];
+
+    strcat(tablePath, dbPath);
+    strcat(tablePath, "\\");
+    strcat(tablePath, dbName);
+    strcat(tablePath, ".yaml");
+
+    fTable = fopen(tablePath, "r+");
+
+    if ( fTable != NULL ){
+        fileSize = fileLen(fTable);
+        tableYaml = malloc(sizeof(char) * fileSize);
+        if (tableYaml != NULL){
+            fseek(fTable, 0, SEEK_SET);
+            fread(tableYaml, sizeof(char), fileSize, fTable);
+            printf("%s", tableYaml);
+            strncpy(tableCounter, tableYaml, strstr(tableYaml, "counter: ") - strstr())
+
+            free(tableYaml);
+        }
+        fclose(fTable);
+    } else {
+        printf("une erreur est survenue x(");
+    }
+
+
+}
+
+int fileLen(FILE* pf){
+    int counter = 0;
+    fseek(pf, 0, SEEK_SET);
+
+    while( !feof(pf) ){
+        fgetc(pf);
+        counter++;
+    }
+    return counter;
 }
