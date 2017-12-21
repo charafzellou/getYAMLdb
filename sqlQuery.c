@@ -175,6 +175,9 @@ void dataInsertion(char * dbPath, char * dbName, char * values){
     char * tableYaml;
     int fileSize;
     char tableCounter[10];
+    char * pointerSave;
+    char * tableYamlSave;
+    char * tableYamlStop;
 
     strcat(tablePath, dbPath);
     strcat(tablePath, "\\");
@@ -190,7 +193,34 @@ void dataInsertion(char * dbPath, char * dbName, char * values){
             fseek(fTable, 0, SEEK_SET);
             fread(tableYaml, sizeof(char), fileSize, fTable);
             printf("%s", tableYaml);
-            strncpy(tableCounter, tableYaml, strstr(tableYaml, "counter: ") - strstr())
+            strncpy(tableCounter, tableYaml, strchr(tableYaml, ' ') - strchr(tableYaml, '\n') );
+            printf("%s", tableCounter);
+
+            values = strchr(values, '(');
+            if ( values != NULL ){
+                pointerSave = ( values, ')');
+                if ( pointerSave != NULL ){
+                    fseek(fTable, 0, SEEK_END);
+                    fprintf(fTable, "    %s %s: \r\n");
+
+                    tableYamlSave = strstr( tableYaml, "params: \r\n");
+                    tableYamlStop = strstr( tableYaml, "content:");
+                    if ( tableYamlSave != NULL && tableYamlStop != NULL){
+                        tableYamlSave = strstr( tableYamlSave, "    ");
+                        if ( tableYamlSave < tableYamlStop) {
+
+                        } else {
+
+                        }
+                    } else {
+                        printf("error");
+                    }
+                } else {
+                    printf("Error: Expecting ')'");
+                }
+            } else {
+                printf("Error: Expecting '('");
+            }
 
             free(tableYaml);
         }
@@ -211,4 +241,43 @@ int fileLen(FILE* pf){
         counter++;
     }
     return counter;
+}
+
+char * tableCounterPlusplus( char * counter){
+    int length;
+
+    length = strlen(counter);
+
+    switch(length){
+        case 1:
+            if ( counter[0] - 48 == 9){
+                counter[0] = '1';
+                counter[1] = '0';
+                counter[2] = '\0';
+            } else {
+                counter[0]++;
+            }
+            break;
+        case 2:
+            if ( counter[1] - 48 == 9){
+                if ( counter[0] - 48 == 9){
+                    counter[2] = 0;
+                    counter[1] = counter[0]++;
+                    counter[0] = '1';
+                    counter[3] = '\0';
+                } else {
+                    counter[1] = '0';
+                    counter[0]++;
+                }
+            } else {
+                counter[0]++;
+            }
+            break;
+        case 3:
+            break;
+        case 4:
+            break;
+        case 5:
+            break;
+    }
 }
