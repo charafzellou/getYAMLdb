@@ -8,7 +8,65 @@
 
 void create_db();
 /*
-int main()
+void remove_dir(char *path) {
+    //Check if file is deleted
+
+    struct dirent *entry = NULL;
+    DIR *dir = NULL;
+    dir = opendir("DataBases\\db_del");
+
+    printf("Choose the Database to delete : \n");
+
+    while(entry = readdir(dir))
+    {
+        DIR *sub_dir = NULL;
+        FILE *file = NULL;
+        char abs_path[100] = "C:\\Users\\ritch\\Desktop\\test_remove\\DataBases\\db_del";
+        if(*(entry->d_name) != '.')
+        {
+            sprintf(abs_path, "%s%s", path, entry->d_name);
+            if(sub_dir = opendir(abs_path))
+            {
+                closedir(sub_dir);
+                remove_dir(abs_path);
+            }
+            else
+            {
+                if(file = fopen(abs_path, "r"))
+                {
+                    fclose(file);
+                    remove(abs_path);
+                }
+            }
+        }
+    }
+
+   remove(path);
+}
+
+int delete_db(){
+   int del;
+   FILE *fp;
+   char filename[] = "file.txt";
+
+   //Check if the file already exist
+   fp = fopen(filename, "r+");
+
+   fprintf(fp, "%s", "Blabla");
+   fclose(fp);
+
+   del = remove(filename);
+
+   if(del == 0) {
+      printf("File deleted successfully\n");
+   } else {
+      printf("Error: unable to delete the file\n");
+   }
+
+   return(0);
+}
+
+int menu()
 {
     int choice;
 

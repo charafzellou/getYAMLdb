@@ -193,6 +193,7 @@ void dataInsertion(char * dbPath, char * dbName, char * values){
             fseek(fTable, 0, SEEK_SET);
             fread(tableYaml, sizeof(char), fileSize, fTable);
             printf("%s", tableYaml);
+<<<<<<< HEAD
             strncpy(tableCounter, tableYaml, strchr(tableYaml, ' ') - strchr(tableYaml, '\n') );
             printf("%s", tableCounter);
 
@@ -221,6 +222,9 @@ void dataInsertion(char * dbPath, char * dbName, char * values){
             } else {
                 printf("Error: Expecting '('");
             }
+=======
+            //strncpy(tableCounter, tableYaml, strstr(tableYaml, "counter: ") - strstr());
+>>>>>>> origin/master
 
             free(tableYaml);
         }
