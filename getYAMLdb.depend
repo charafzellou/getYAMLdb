@@ -49,10 +49,12 @@
 1513868181 source:c:\users\chaze exodus\documents\github\getyamldb\yamlparser.c
 	"yamlParser.h"
 
-1513862956 source:e:\juanj\documents\github\git\getyamldb\main.c
+1513890652 source:e:\juanj\documents\github\git\getyamldb\main.c
 	<stdio.h>
+	"sqlQuery.h"
+	"yamlParser.h"
 
-1513861914 source:e:\juanj\documents\github\git\getyamldb\manage_db.c
+1513889964 source:e:\juanj\documents\github\git\getyamldb\manage_db.c
 	<stdio.h>
 	<stdlib.h>
 	<windows.h>
@@ -78,17 +80,17 @@
 	<windows.h>
 	<string.h>
 
-1513862621 source:e:\juanj\documents\github\git\getyamldb\sqlquery.c
+1513901347 source:e:\juanj\documents\github\git\getyamldb\sqlquery.c
 	"sqlQuery.h"
 
-1513862240 e:\juanj\documents\github\git\getyamldb\sqlquery.h
+1513891837 e:\juanj\documents\github\git\getyamldb\sqlquery.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	<windows.h>
 	<time.h>
 
-1513862810 source:e:\juanj\documents\github\git\getyamldb\yamlparser.c
+1513889964 source:e:\juanj\documents\github\git\getyamldb\yamlparser.c
 	"yamlParser.h"
 
 1513862802 e:\juanj\documents\github\git\getyamldb\yamlparser.h

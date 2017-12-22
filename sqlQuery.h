@@ -11,3 +11,4 @@ void sqlQueryF(char * dbPath, char * sqlQuery, int querySize);
 int tableExist(char * dbPath, char * dbName);
 void dataInsertion(char * dbPath, char * dbName, char * values);
 int fileLen(FILE* pf);
+char * tableCounterPlusplus( char * counter);

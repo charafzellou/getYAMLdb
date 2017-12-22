@@ -124,12 +124,9 @@ void sqlQueryF(char * dbPath, char * sqlQuery, int querySize){
         pointerSave += 12;
         sqlQuery = pointerSave;
         pointerSave = strchr(sqlQuery, ' ');
-        printf("%s\n", sqlQuery); //test
         if ( pointerSave != NULL){
             strncpy(table, sqlQuery, pointerSave - sqlQuery);
             table[pointerSave - sqlQuery] = '\0';
-            printf("result : \n"); // test
-            printf("|%s|\n", table); // test
 
             if (tableExist(dbPath, table)){
                 sqlQuery = pointerSave;
@@ -138,7 +135,6 @@ void sqlQueryF(char * dbPath, char * sqlQuery, int querySize){
                 if ( pointerSave == sqlQuery + 1 ){
                     sqlQuery = pointerSave;
                     pointerSave = strchr(sqlQuery, ' ');
-                    printf("values ok \n"); // test
                     dataInsertion(dbPath, table, pointerSave);
                 }
             } else {
@@ -158,7 +154,6 @@ int tableExist(char * dbPath, char * tableName){
     strcat(tablePath, "\\");
     strcat(tablePath, tableName);
     strcat(tablePath, ".yaml");
-printf("%s\n", tablePath); // test
     fTable = fopen(tablePath, "r");
     if ( fTable != NULL){
         fclose(fTable);
@@ -175,9 +170,11 @@ void dataInsertion(char * dbPath, char * dbName, char * values){
     char * tableYaml;
     int fileSize;
     char tableCounter[10];
+    tableCounter[0] = '\0';
     char * pointerSave;
     char * tableYamlSave;
     char * tableYamlStop;
+    int putcounter = 0;
 
     strcat(tablePath, dbPath);
     strcat(tablePath, "\\");
@@ -192,27 +189,49 @@ void dataInsertion(char * dbPath, char * dbName, char * values){
         if (tableYaml != NULL){
             fseek(fTable, 0, SEEK_SET);
             fread(tableYaml, sizeof(char), fileSize, fTable);
-            printf("%s", tableYaml);
-<<<<<<< HEAD
-            strncpy(tableCounter, tableYaml, strchr(tableYaml, ' ') - strchr(tableYaml, '\n') );
-            printf("%s", tableCounter);
-
+            printf("%s\n", tableYaml);
+            strncpy(tableCounter, strchr(tableYaml, ' ') + 1, strchr(tableYaml, '\n') - strchr(tableYaml, ' ') - 1 );
+            tableCounter[strchr(tableYaml, '\n') - strchr(tableYaml, ' ') - 1] = '\0';
+            tableCounterPlusplus(tableCounter);
             values = strchr(values, '(');
             if ( values != NULL ){
-                pointerSave = ( values, ')');
+                pointerSave = strchr( values, ')');
                 if ( pointerSave != NULL ){
                     fseek(fTable, 0, SEEK_END);
-                    fprintf(fTable, "    %s %s: \r\n");
-
-                    tableYamlSave = strstr( tableYaml, "params: \r\n");
+                    fprintf(fTable, "    %s %s: \r\n", dbName, tableCounter);
+                    tableYamlSave = strstr( tableYaml, "params:");
                     tableYamlStop = strstr( tableYaml, "content:");
                     if ( tableYamlSave != NULL && tableYamlStop != NULL){
-                        tableYamlSave = strstr( tableYamlSave, "    ");
-                        if ( tableYamlSave < tableYamlStop) {
 
-                        } else {
-
-                        }
+                        do{
+                            if ( tableYamlSave > tableYamlStop ) {
+                                break;
+                            }
+                            tableYamlSave = strstr( tableYamlSave, "    ");
+                            fputs("    ", fTable);
+                            while( tableYamlSave[putcounter] != ':'){
+                                fputc(tableYamlSave[putcounter], fTable);
+                                putcounter++;
+                            }
+                            putcounter = 1;
+                            fputs(": ", fTable);
+                            if ( values != NULL){
+                                while ( values[putcounter] != ','){
+                                    if ( values[putcounter] == ')'){
+                                        values = NULL;
+                                        break;
+                                    }
+                                    fputc(values[putcounter], fTable);
+                                    putcounter++;
+                                }
+                                values = strchr(values, ',');
+                            } else {
+                                fputs("NULL", fTable);
+                            }
+                            fputs("\n\r", fTable);
+                            putcounter = 0;
+                            tableYamlSave++;
+                        } while(tableYamlSave < tableYamlStop);
                     } else {
                         printf("error");
                     }
@@ -222,9 +241,6 @@ void dataInsertion(char * dbPath, char * dbName, char * values){
             } else {
                 printf("Error: Expecting '('");
             }
-=======
-            //strncpy(tableCounter, tableYaml, strstr(tableYaml, "counter: ") - strstr());
->>>>>>> origin/master
 
             free(tableYaml);
         }
@@ -274,14 +290,101 @@ char * tableCounterPlusplus( char * counter){
                     counter[0]++;
                 }
             } else {
-                counter[0]++;
+                counter[1]++;
             }
             break;
         case 3:
+            if ( counter[2] - 48 == 9){
+                if ( counter[1] - 48 == 9){
+                    if ( counter[0] - 48 == 9 ){
+                        counter[4] = '\n';
+                        counter[3] = '0';
+                        counter[2] = '0';
+                        counter[1] = '0';
+                        counter[0] = '1';
+                    } else {
+                        counter[0]++;
+                        counter[1] = '0';
+                        counter[2] = '0';
+                    }
+                } else {
+                    counter[1]++;
+                    counter[2] = '0';
+                }
+            } else {
+                counter[2]++;
+            }
             break;
         case 4:
+            if ( counter[3] - 48 == 9){
+                if ( counter[2] - 48 == 9){
+                    if ( counter[1] - 48 == 9 ){
+                        if ( counter[0] - 48 == 9){
+                            counter[5] = '\n';
+                            counter[4] = '0';
+                            counter[3] = '0';
+                            counter[2] = '0';
+                            counter[1] = '0';
+                            counter[0] = '1';
+                        } else {
+                            counter[3] = '0';
+                            counter[2] = '0';
+                            counter[1] = '0';
+                            counter[0]++;
+                        }
+                    } else {
+                        counter[1]++;
+                        counter[2] = '0';
+                        counter[3] = '0';
+                    }
+                } else {
+                    counter[2]++;
+                    counter[3] = '0';
+                }
+            } else {
+                counter[3]++;
+            }
             break;
         case 5:
+            if ( counter[4] - 48 == 9){
+                if ( counter[3] - 48 == 9){
+                    if ( counter[2] - 48 == 9 ){
+                        if ( counter[1] - 48 == 9){
+                            if ( counter[0] - 48 == 9){
+                                counter[6] = '\n';
+                                counter[5] = '0';
+                                counter[4] = '0';
+                                counter[3] = '0';
+                                counter[2] = '0';
+                                counter[1] = '0';
+                                counter[0] = '1';
+                            } else {
+                                counter[0]++;
+                                counter[1] = '0';
+                                counter[2] = '0';
+                                counter[3] = '0';
+                                counter[4] = '0';
+                            }
+                        } else {
+                            counter[1]++;
+                            counter[2] = '0';
+                            counter[3] = '0';
+                            counter[4] = '0';
+                        }
+                    } else {
+                        counter[2]++;
+                        counter[3] = '0';
+                        counter[4] = '0';
+                    }
+                } else {
+                    counter[3]++;
+                    counter[4] = '0';
+                }
+            } else {
+                counter[4]++;
+            }
             break;
     }
+
+    return counter;
 }
