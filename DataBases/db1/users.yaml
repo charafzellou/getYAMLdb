@@ -10,3 +10,10 @@ content:
         average: 55.5
         rank: c
         name: gilbert
+    users 2: 
+        number: 1
+        average: 2
+        rank: 2
+        name: 2
+        users 1: 2
+

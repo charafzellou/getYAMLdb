@@ -1,4 +1,14 @@
+/*
+** Filename : main.c
+**
+** Made by :
+**
+** Description : this is code purpose is to manage a database whit Yaml files
+*/
+
 #include <stdio.h>
+#include "sqlQuery.h"
+#include "yamlParser.h"
 
 int main() {
     //YAML_Parser();
