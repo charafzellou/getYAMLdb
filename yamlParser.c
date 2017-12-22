@@ -37,7 +37,6 @@ int YAML_Parser() {
 
     fgets(stream, NULL, file);
 
-
     /*
     short seekJump = 6;
     while(seekJump > 0){
